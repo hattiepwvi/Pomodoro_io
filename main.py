@@ -31,7 +31,7 @@ def start_count():
     work_sec = WORK_MIN * 60
     short_break_sec = SHORT_BREAK_MIN * 60
     long_break_sec = LONG_BREAK_MIN * 60
-    # for i in range(8):
+
     if reps == 8:
         count = long_break_sec
         timer_label.config(text="Break", fg=RED)
@@ -50,23 +50,24 @@ def count_down(count):
     global timer
     count_min = math.floor(count / 60)
     count_sec = count % 60
+
     if count_sec < 10:
         count_sec = f"0{count_sec}"
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
 
     if count > 0:
-        # count - 1 是传入count_down函数的参数
         timer = window.after(1000, count_down, count-1)
     else:
         start_count()
         mark = ""
         for _ in range(math.floor(reps/2)):
-        #if reps > 1 and reps % 2 != 0:
             mark += "️✔"
-            check_label.config(text=mark )
+            check_label.config(text=mark)
 
 # ---------------------------- UI SETUP ------------------------------- #
+
+
 window = Tk()
 window.title("Pomodoro")
 window.config(padx=100, pady=50, bg=YELLOW)
