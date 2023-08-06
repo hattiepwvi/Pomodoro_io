@@ -1,5 +1,6 @@
 from tkinter import *
 import math
+import pygame
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -64,6 +65,9 @@ def count_down(count):
         for _ in range(math.floor(reps/2)):
             marks += "✔"
         check_label.config(text=marks, fg=GREEN)
+        pygame.init()
+        sound = pygame.mixer.Sound('icecream.wav')
+        sound.play()
 
 # ---------------------------- UI SETUP ------------------------------- #
 
